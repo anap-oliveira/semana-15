@@ -31,13 +31,13 @@ const postColaboradora = (req, res) => {
   const login = (req, res) => {
     Colaboradoras.findOne({ email: req.body.email }, function(error, colaboradora) {
       if (!colaboradora) {
-        return res.status(404).send(`Não existe colaboradora com o email ${req.body.email}`);
+        return res.status(404).send(`Nenhuma colaboradora com o email ${req.body.email}`);
       }
   
       const senhaValida = bcrypt.compareSync(req.body.senha, colaboradora.senha);
   
       if (!senhaValida) {
-        return res.status(403).send('que senha é essa hein');
+        return res.status(403).send('Essa senha não existe');
       }
   
       const token = jwt.sign({ email: req.body.email }, SECRET);
