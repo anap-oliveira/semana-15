@@ -47,7 +47,6 @@ const postColaboradora = (req, res) => {
   }
   
   module.exports = {
-    create,
     getAll,
     login,
     postColaboradora
